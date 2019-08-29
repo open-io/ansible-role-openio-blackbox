@@ -32,6 +32,16 @@ modules:
       preferred_ip_protocol: ip4
     prober: icmp
     timeout: 5s
+  keystone:
+    prober: http
+    timeout: 15s
+    http:
+      method: POST
+      headers:
+        Content-Type: application/json
+      # yamllint disable-line rule:line-length
+      body: '{"auth": {"identity": {"methods": ["password"], "password": { "user": { "name": "h34lthch3ck", "domain": { "id": "default" }, "password": "h34lthch3ck"}}}}}'
+      valid_status_codes: [ 401 ]
   meta0:
     prober: http
     timeout: 5s
