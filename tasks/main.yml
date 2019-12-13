@@ -6,7 +6,6 @@
     - "{{ ansible_os_family }}.yml"
   tags:
     - install
-    - configure
 
 - name: Set defaults file
   template:
